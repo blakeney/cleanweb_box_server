@@ -9,7 +9,7 @@ class User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     email = models.EmailField()
-    points = models.CharField(max_length=100)
+    points = models.IntegerField()
 
     def __unicode__(self):
         return str(self.username)+" "+str(self.points)
