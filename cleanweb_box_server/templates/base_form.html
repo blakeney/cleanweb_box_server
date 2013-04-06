@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+	<h3>Please correct the error(s) below.</h3>
+{% endif %}
+
+<form action="" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+{% block form %}
+	{{form.as_p}}
+{% endblock %}
+<input type="submit" value="Submit">
+</form>
+
+{% endblock %}
