@@ -1,12 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from polls.models import Poll
 from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
+from crowdsource.models import Crowdsource
 
 def display_form(request):
   
-def submit(request, username):
+def upload(request, username):
 
 def display_submissions(request):
 
