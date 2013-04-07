@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from cleanweb_box_server import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -13,10 +14,10 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
     # Home Page
-    url(r'^$', 'views.home', name='home'),
+    url(r'^$', views.home, name='home'),
     
     # Dispatch requests to individual app url files
-    url(r'^crowdsource/', include('crowdsource.urls')),
+    url(r'^crowdsource/', include('crowdsource.urls', namespace = 'crowdsource')),
     
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
