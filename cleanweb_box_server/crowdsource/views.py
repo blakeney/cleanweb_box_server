@@ -18,8 +18,9 @@ def upload(request):
             u = User.objects.get(username = form.cleaned_data['username'])
             if u.password != form.cleaned_data['password']:
             	error_string = error_string + "/n Incorrect password."
-        	else:
-        		#submission fields: user, IDno, picture, sub_date, latitude, longitude
+            	return render(request, 'upload_form.html', { 'form': form, 'error_message': error_string, })
+            else:
+                #submission fields: user, IDno, picture, sub_date, latitude, longitude
         		#creating a new submission under the user
         		u.submission_set.create(
         			IDno = form.cleaned_data['IDno'],
@@ -27,7 +28,7 @@ def upload(request):
         			sub_date = timezone.now(),
         			latitude = form.cleaned_data['latitude'],
         			longitude = form.cleaned_data['longitude'])
-            return HttpResponseRedirect('/thanks/') # Redirect after POST
+            	return HttpResponseRedirect('/thanks/') # Redirect after POST
     else: #display blank form
         form = UploadForm() # An unbound form
     return render(request, 'upload_form.html', {
