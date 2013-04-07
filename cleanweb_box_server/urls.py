@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^$', 'views.home', name='home'),
     
     # Dispatch requests to individual app url files
-    url(r'^crowdsource', include('crowdsource.urls')),
+    url(r'^crowdsource/', include('crowdsource.urls')),
     
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
