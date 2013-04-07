@@ -8,3 +8,12 @@ class UploadForm(forms.Form):
     latitude = forms.DecimalField(decimal_places=6, max_digits=10)
     longitude = forms.DecimalField(decimal_places=6, max_digits=10)
         
+class NewUserForm(forms.Form):
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
+    email = forms.EmailField()
+
+
+    
