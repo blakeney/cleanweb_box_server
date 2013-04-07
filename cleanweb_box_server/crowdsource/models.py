@@ -19,8 +19,8 @@ class Submission(models.Model):
     IDno = models.PositiveIntegerField()
     #picture = models.ImageField()
     sub_date = models.DateTimeField('date submitted')
-    latitude = models.DecimalField(max_digit = 10, decimal_places = 6)
-    longitude = models.DecimalField(max_digit = 10, decimal_places = 6)
+    latitude = models.DecimalField(max_digits = 10, decimal_places = 6)
+    longitude = models.DecimalField(max_digits = 10, decimal_places = 6)
 
     def __unicode__(self):
         return self.IDno
