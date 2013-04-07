@@ -6,7 +6,7 @@
 	<h3>Please correct the error(s) below.</h3>
 {% endif %}
 
-<form action="" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+<form action="" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>{% csrf_token %}
 {% block form %}
 	{{form.as_p}}
 {% endblock %}

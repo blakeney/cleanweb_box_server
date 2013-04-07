@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
+from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from crowdsource.models import User, Submission
@@ -30,11 +31,18 @@ def upload(request):
                     latitude = form.cleaned_data['latitude'],
                     longitude = form.cleaned_data['longitude'])
                 return HttpResponseRedirect('/thanks/') # Redirect after POST
+
+        #if form is not valid
+        else:
+            error_string = "Form was not valid somehow"
+            return render(request, 'crowdsource/upload_form.html', { 'form': form, 'error_message': error_string, })
+
     else: #display blank form
         form = UploadForm() # An unbound form
-        return render(request, 'crowdsource/upload_form.html', {
-        'form': form,
-    })
+        context = RequestContext(request, {
+            'form': form,
+        })
+        return render(request, 'crowdsource/upload_form.html', context)
     
 #display thanks page
 def thanks(request):
