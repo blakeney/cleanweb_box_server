@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from crowdsource.models import User, Submission
 from django.utils import timezone
-from crowdsource.forms import UploadForm
+from crowdsource.forms import UploadForm, NewUserForm
 
 #display the submission form (no submission of data!)
 def upload(request):
@@ -47,6 +47,40 @@ def upload(request):
 #display thanks page
 def thanks(request):
     return HttpResponse("Thank you! Congratz!")
+
+#create a user
+def newUser(request):
+
+    #if form is being posted
+    if request.method == 'POST':
+        data = request.POST #store the posted information in data
+        form = NewUserForm(data) #form bound to POST data
+        if form.is_valid():
+            #create a new User object
+            user = User(
+                first_name = form.cleaned_data['first_name']
+                last_name = form.cleaned_data['last_name']
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                email = form.cleaned_data['email']
+            )
+            user.save()
+            return HttpResponseRedirect('/thanks/')
+
+        #if form is not valid
+        else: 
+            error_string = "Form was not valid somehow"
+            return render(request, 'base_form.html', { 'form': form, 'error_message': error_string, })
+
+    #if form is being displayed
+    else: 
+        form = NewUserForm() # An unbound form
+        context = RequestContext(request, {
+            'form': form,
+        })
+        return render(request, 'base_form.html', context)
+        
+
 
 def home(request):
     return HttpResponse("Home!")
