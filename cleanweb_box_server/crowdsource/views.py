@@ -33,7 +33,10 @@ def upload(request):
     return render(request, 'upload_form.html', {
         'form': form,
     })
-
+    
+#display thanks page
+def thanks(request):
+        return HttpResponse("Thank you! Congratz!")
 
 #display submissions already uploaded (can be reached as a static webpage or as a redirect from upload page)
 def display_submissions(request):
