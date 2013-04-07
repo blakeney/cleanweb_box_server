@@ -30,7 +30,7 @@ def upload(request):
                     sub_date = timezone.now(),
                     latitude = form.cleaned_data['latitude'],
                     longitude = form.cleaned_data['longitude'])
-                return HttpResponseRedirect('crowdsource/thanks/') # Redirect after POST
+                return HttpResponseRedirect('/thanks/') # Redirect after POST
 
         #if form is not valid
         else:
