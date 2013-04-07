@@ -30,7 +30,7 @@ def upload(request):
                     sub_date = timezone.now(),
                     latitude = form.cleaned_data['latitude'],
                     longitude = form.cleaned_data['longitude'])
-                return HttpResponseRedirect('/thanks/') # Redirect after POST
+                return HttpResponseRedirect('crowdsource/thanks/') # Redirect after POST
 
         #if form is not valid
         else:
@@ -63,9 +63,10 @@ def newUser(request):
                 username = form.cleaned_data['username'],
                 password = form.cleaned_data['password'],
                 email = form.cleaned_data['email'],
+                points = 0,
             )
             user.save()
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/crowdsource/thanks/')
 
         #if form is not valid
         else: 

@@ -4,6 +4,6 @@ from crowdsource import views
 urlpatterns = patterns('',
     url(r'^$', views.home, name='crowdsource_home'),
     url(r'^upload', views.upload, name='crowdsource_upload'),
-    url(r'^thanks$', views.thanks, name='crowdsource_thanks'),
+    url(r'^thanks', views.thanks, name='crowdsource_thanks'),
     url(r'^newuser', views.newUser, name ='crowdsource_newuser'),
 )
