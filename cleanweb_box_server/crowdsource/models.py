@@ -17,10 +17,10 @@ class User(models.Model):
 class Submission(models.Model):
     user = models.ForeignKey(User)
     IDno = models.PositiveIntegerField()
-    picture = models.ImageField()
+    #picture = models.ImageField()
     sub_date = models.DateTimeField('date submitted')
-    latitude = models.DecimalField()
-    longitude = models.DecimalField()
+    latitude = models.DecimalField(max_digit = 10, decimal_places = 6)
+    longitude = models.DecimalField(max_digit = 10, decimal_places = 6)
 
     def __unicode__(self):
         return self.IDno
