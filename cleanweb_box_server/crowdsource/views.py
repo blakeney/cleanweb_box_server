@@ -23,7 +23,7 @@ def upload(request):
         		#creating a new submission under the user
         		u.submission_set.create(
         			IDno = form.cleaned_data['IDno'],
-        			picture = form.cleaned_data['picture'],
+        			#picture = form.cleaned_data['picture'],
         			sub_date = timezone.now(),
         			latitude = form.cleaned_data['latitude'],
         			longitude = form.cleaned_data['longitude'])
