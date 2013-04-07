@@ -19,7 +19,7 @@ def upload(request):
             u = User.objects.get(username = form.cleaned_data['username'])
             if u.password != form.cleaned_data['password']:
                 error_string = error_string + "/n Incorrect password."
-                return render(request, 'upload_form.html', { 'form': form, 'error_message': error_string, })
+                return render(request, 'crowdsource/upload_form.html', { 'form': form, 'error_message': error_string, })
             else:
                 #submission fields: user, IDno, picture, sub_date, latitude, longitude
                 #creating a new submission under the user
@@ -32,7 +32,7 @@ def upload(request):
                 return HttpResponseRedirect('/thanks/') # Redirect after POST
     else: #display blank form
         form = UploadForm() # An unbound form
-        return render(request, 'upload_form.html', {
+        return render(request, 'crowdsource/upload_form.html', {
         'form': form,
     })
     
